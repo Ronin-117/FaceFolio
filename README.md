@@ -10,9 +10,7 @@
 
 ## 📸 Demo
 
-*(**Pro Tip:** Record a short GIF of you using the application and replace this image. Use a tool like [ScreenToGif](https://www.screentogif.com/) or [Kap](https://getkap.co/). A GIF is the best way to showcase your project!)*
-
-  <!-- This is a placeholder GIF, replace it with your own! -->
+![FaceFolio Demo Screenshot](./static/demo.png)
 
 <br>
 
