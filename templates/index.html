@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Face Registration</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Your Custom Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+     <!-- Animated background -->
+    <div class="background">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div id="container">
+        <h1>Face Registration</h1>
+        <video id="video" width="640" height="480" autoplay muted playsinline></video>
+
+        <div id="status">Enter your name and start recording.</div>
+
+        <div id="controls">
+            <div class="input-group">
+                <input type="text" id="nameInput" placeholder="Enter Name">
+            </div>
+            <button id="startBtn">Start Recording</button>
+        </div>
+
+        <div id="sessionControls" style="display:none;">
+            <button id="saveBtn">Save Session</button>
+            <button id="discardBtn">Discard Session</button>
+        </div>
+    </div>
+
+    <!-- Socket.IO and your custom script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

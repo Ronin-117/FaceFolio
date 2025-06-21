@@ -1,0 +1,187 @@
+/* --- Global Settings & CSS Variables --- */
+:root {
+    --bg-color: #1a1a2e;
+    --primary-color: #03e9f4; /* A vibrant, techy cyan */
+    --secondary-color: #16213e;
+    --card-bg-color: rgba(22, 33, 62, 0.6); /* Semi-transparent for glass effect */
+    --text-color: #e3e3e3;
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Hide scrollbars for the background animation */
+}
+
+/* --- Animated Background --- */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.background span {
+    width: 20vmin;
+    height: 20vmin;
+    border-radius: 20vmin;
+    backface-visibility: hidden;
+    position: absolute;
+    animation: move;
+    animation-duration: 45s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.background span:nth-child(1) { top: 5%; left: 10%; background: var(--primary-color); animation-duration: 50s; }
+.background span:nth-child(2) { top: 20%; left: 80%; background: #e91e63; animation-duration: 60s; }
+.background span:nth-child(3) { top: 80%; left: 90%; background: var(--primary-color); animation-duration: 40s; }
+.background span:nth-child(4) { top: 90%; left: 10%; background: #e91e63; animation-duration: 55s; }
+.background span:nth-child(5) { top: 50%; left: 50%; background: var(--primary-color); animation-duration: 35s; }
+
+@keyframes move {
+    100% { transform: translate3d(0, 0, 1px) rotate(360deg); }
+}
+
+/* --- Main Container (Glassmorphism) --- */
+#container {
+    width: 90%;
+    max-width: 700px;
+    padding: 30px 40px;
+    background: var(--card-bg-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px); /* This creates the frosted glass effect */
+    text-align: center;
+    z-index: 1;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 15px rgba(3, 233, 244, 0.3);
+    margin-bottom: 20px;
+}
+
+/* --- Controls: Inputs and Buttons --- */
+#status {
+    margin-top: 15px;
+    min-height: 24px; /* Prevents layout shift */
+    font-style: italic;
+    font-weight: 300;
+    transition: color 0.3s ease;
+}
+
+.input-group {
+    position: relative;
+    margin: 20px 0;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 15px 20px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(3, 233, 244, 0.5);
+}
+
+button {
+    padding: 12px 25px;
+    margin: 5px;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--primary-color);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    color: var(--bg-color);
+    background-color: var(--primary-color);
+    box-shadow: 0 0 25px var(--primary-color);
+}
+
+#saveBtn {
+    border-color: var(--success-color);
+    color: var(--success-color);
+}
+#saveBtn:hover {
+    background-color: var(--success-color);
+    box-shadow: 0 0 25px var(--success-color);
+    color: var(--bg-color);
+}
+
+#discardBtn {
+    border-color: var(--error-color);
+    color: var(--error-color);
+}
+#discardBtn:hover {
+    background-color: var(--error-color);
+    box-shadow: 0 0 25px var(--error-color);
+    color: var(--bg-color);
+}
+
+#controls, #sessionControls {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (min-width: 600px) {
+    #controls, #sessionControls {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
